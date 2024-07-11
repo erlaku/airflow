@@ -1,0 +1,61 @@
+[2024-07-12T01:00:58.944+0700] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-12T01:00:58.959+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: update_allogistic_dag.execute_ipynb scheduled__2024-07-11T17:00:00+00:00 [queued]>
+[2024-07-12T01:00:58.969+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: update_allogistic_dag.execute_ipynb scheduled__2024-07-11T17:00:00+00:00 [queued]>
+[2024-07-12T01:00:58.970+0700] {taskinstance.py:2306} INFO - Starting attempt 1 of 6
+[2024-07-12T01:00:59.000+0700] {taskinstance.py:2330} INFO - Executing <Task(PapermillOperator): execute_ipynb> on 2024-07-11 17:00:00+00:00
+[2024-07-12T01:00:59.005+0700] {standard_task_runner.py:63} INFO - Started process 300264 to run task
+[2024-07-12T01:00:59.008+0700] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'update_allogistic_dag', 'execute_ipynb', 'scheduled__2024-07-11T17:00:00+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/run_notebook.py', '--cfg-path', '/tmp/tmpqmuvn018']
+[2024-07-12T01:00:59.009+0700] {standard_task_runner.py:91} INFO - Job 28: Subtask execute_ipynb
+[2024-07-12T01:00:59.150+0700] {task_command.py:426} INFO - Running <TaskInstance: update_allogistic_dag.execute_ipynb scheduled__2024-07-11T17:00:00+00:00 [running]> on host LWIN-ID-OCT22-0115.
+[2024-07-12T01:00:59.271+0700] {logging_mixin.py:188} WARNING - /mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/utils/context.py:212 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-07-12T01:00:59.364+0700] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='update_allogistic_dag' AIRFLOW_CTX_TASK_ID='execute_ipynb' AIRFLOW_CTX_EXECUTION_DATE='2024-07-11T17:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-11T17:00:00+00:00'
+[2024-07-12T01:00:59.366+0700] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-12T01:00:59.368+0700] {execute.py:83} INFO - Input Notebook:  /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/allogisticompiler.ipynb
+[2024-07-12T01:00:59.370+0700] {execute.py:84} INFO - Output Notebook: /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/out-allogisticompiler.ipynb
+[2024-07-12T01:00:59.406+0700] {execute.py:97} WARNING - Passed unknown parameter: execution_date
+[2024-07-12T01:00:59.972+0700] {parameterize.py:114} WARNING - Input notebook does not contain a cell with tag 'parameters'
+[2024-07-12T01:01:14.752+0700] {clientwrap.py:44} INFO - Executing notebook with kernel: python3
+[2024-07-12T01:02:27.533+0700] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-12T01:02:27.537+0700] {process_utils.py:132} INFO - Sending Signals.SIGTERM to group 300264. PIDs of all processes in the group: [300293, 300632, 300264]
+[2024-07-12T01:02:27.538+0700] {process_utils.py:87} INFO - Sending the signal Signals.SIGTERM to group 300264
+[2024-07-12T01:02:27.538+0700] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-07-12T01:02:27.752+0700] {process_utils.py:80} INFO - Process psutil.Process(pid=300632, status='terminated', started='01:02:15') (300632) terminated with exit code None
+[2024-07-12T01:02:30.191+0700] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-12T01:02:30.215+0700] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/providers/papermill/operators/papermill.py", line 118, in execute
+    pm.execute_notebook(
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/execute.py", line 116, in execute_notebook
+    nb = papermill_engines.execute_notebook_with_engine(
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/engines.py", line 48, in execute_notebook_with_engine
+    return self.get_engine(engine_name).execute_notebook(nb, kernel_name, **kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/engines.py", line 370, in execute_notebook
+    cls.execute_managed_notebook(nb_man, kernel_name, log_output=log_output, **kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/engines.py", line 442, in execute_managed_notebook
+    return PapermillNotebookClient(nb_man, **final_kwargs).execute()
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/clientwrap.py", line 45, in execute
+    self.papermill_execute_cells()
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/clientwrap.py", line 72, in papermill_execute_cells
+    self.execute_cell(cell, index)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 1871, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.10/selectors.py", line 469, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2613, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2024-07-12T01:02:30.290+0700] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=update_allogistic_dag, task_id=execute_ipynb, run_id=scheduled__2024-07-11T17:00:00+00:00, execution_date=20240711T170000, start_date=20240711T180058, end_date=20240711T180230
+[2024-07-12T01:02:30.401+0700] {process_utils.py:80} INFO - Process psutil.Process(pid=300264, status='terminated', exitcode=2, started='01:00:58') (300264) terminated with exit code 2
+[2024-07-12T01:02:30.404+0700] {process_utils.py:80} INFO - Process psutil.Process(pid=300293, status='terminated', started='01:01:04') (300293) terminated with exit code None

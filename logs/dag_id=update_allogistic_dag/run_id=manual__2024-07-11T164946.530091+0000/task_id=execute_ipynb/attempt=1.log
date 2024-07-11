@@ -1,0 +1,22 @@
+[2024-07-11T23:54:53.760+0700] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T23:54:53.781+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: update_allogistic_dag.execute_ipynb manual__2024-07-11T16:49:46.530091+00:00 [queued]>
+[2024-07-11T23:54:53.796+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: update_allogistic_dag.execute_ipynb manual__2024-07-11T16:49:46.530091+00:00 [queued]>
+[2024-07-11T23:54:53.798+0700] {taskinstance.py:2306} INFO - Starting attempt 1 of 6
+[2024-07-11T23:54:53.839+0700] {taskinstance.py:2330} INFO - Executing <Task(PapermillOperator): execute_ipynb> on 2024-07-11 16:49:46.530091+00:00
+[2024-07-11T23:54:53.844+0700] {standard_task_runner.py:63} INFO - Started process 273352 to run task
+[2024-07-11T23:54:53.847+0700] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'update_allogistic_dag', 'execute_ipynb', 'manual__2024-07-11T16:49:46.530091+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/run_notebook.py', '--cfg-path', '/tmp/tmpzcse95vo']
+[2024-07-11T23:54:53.850+0700] {standard_task_runner.py:91} INFO - Job 21: Subtask execute_ipynb
+[2024-07-11T23:54:54.026+0700] {task_command.py:426} INFO - Running <TaskInstance: update_allogistic_dag.execute_ipynb manual__2024-07-11T16:49:46.530091+00:00 [running]> on host LWIN-ID-OCT22-0115.
+[2024-07-11T23:54:54.187+0700] {logging_mixin.py:188} WARNING - /mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/utils/context.py:212 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-07-11T23:54:54.295+0700] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='update_allogistic_dag' AIRFLOW_CTX_TASK_ID='execute_ipynb' AIRFLOW_CTX_EXECUTION_DATE='2024-07-11T16:49:46.530091+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-11T16:49:46.530091+00:00'
+[2024-07-11T23:54:54.300+0700] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T23:54:54.303+0700] {execute.py:83} INFO - Input Notebook:  /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/allogisticompiler.ipynb
+[2024-07-11T23:54:54.306+0700] {execute.py:84} INFO - Output Notebook: /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/out-allogisticompiler.ipynb
+[2024-07-11T23:54:54.357+0700] {execute.py:97} WARNING - Passed unknown parameter: execution_date
+[2024-07-11T23:54:54.847+0700] {parameterize.py:114} WARNING - Input notebook does not contain a cell with tag 'parameters'
+[2024-07-11T23:55:04.933+0700] {clientwrap.py:44} INFO - Executing notebook with kernel: python3
+[2024-07-11T23:57:48.659+0700] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T23:57:48.748+0700] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=update_allogistic_dag, task_id=execute_ipynb, run_id=manual__2024-07-11T16:49:46.530091+00:00, execution_date=20240711T164946, start_date=20240711T165453, end_date=20240711T165748
+[2024-07-11T23:57:48.826+0700] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T23:57:48.847+0700] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T23:57:48.851+0700] {local_task_job_runner.py:222} INFO - ::endgroup::

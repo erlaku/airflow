@@ -1,0 +1,42 @@
+[2024-07-11T22:50:44.290+0700] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T22:50:44.315+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example_papermill_operator.run_example_notebook manual__2024-07-11T15:49:53.369487+00:00 [queued]>
+[2024-07-11T22:50:44.337+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example_papermill_operator.run_example_notebook manual__2024-07-11T15:49:53.369487+00:00 [queued]>
+[2024-07-11T22:50:44.339+0700] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-07-11T22:50:44.376+0700] {taskinstance.py:2330} INFO - Executing <Task(PapermillOperator): run_example_notebook> on 2024-07-11 15:49:53.369487+00:00
+[2024-07-11T22:50:44.380+0700] {standard_task_runner.py:63} INFO - Started process 244415 to run task
+[2024-07-11T22:50:44.383+0700] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'example_papermill_operator', 'run_example_notebook', 'manual__2024-07-11T15:49:53.369487+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/run_notebook.py', '--cfg-path', '/tmp/tmpp1dipz8t']
+[2024-07-11T22:50:44.385+0700] {standard_task_runner.py:91} INFO - Job 17: Subtask run_example_notebook
+[2024-07-11T22:50:44.507+0700] {task_command.py:426} INFO - Running <TaskInstance: example_papermill_operator.run_example_notebook manual__2024-07-11T15:49:53.369487+00:00 [running]> on host LWIN-ID-OCT22-0115.
+[2024-07-11T22:50:44.590+0700] {logging_mixin.py:188} WARNING - /mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/utils/context.py:212 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-07-11T22:50:44.711+0700] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='example_papermill_operator' AIRFLOW_CTX_TASK_ID='run_example_notebook' AIRFLOW_CTX_EXECUTION_DATE='2024-07-11T15:49:53.369487+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-11T15:49:53.369487+00:00'
+[2024-07-11T22:50:44.715+0700] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T22:50:44.719+0700] {execute.py:83} INFO - Input Notebook:  /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/test.ipynb
+[2024-07-11T22:50:44.722+0700] {execute.py:84} INFO - Output Notebook: /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/out-2024-07-11 15:49:53.369487+00:00.ipynb
+[2024-07-11T22:50:44.782+0700] {execute.py:97} WARNING - Passed unknown parameter: execution_date
+[2024-07-11T22:50:44.784+0700] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T22:50:44.787+0700] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/providers/papermill/operators/papermill.py", line 118, in execute
+    pm.execute_notebook(
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/execute.py", line 98, in execute_notebook
+    nb = parameterize_notebook(
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/parameterize.py", line 86, in parameterize_notebook
+    kernel_name = papermill_engines.nb_kernel_name(engine_name, nb, kernel_name)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/engines.py", line 52, in nb_kernel_name
+    return self.get_engine(engine_name).nb_kernel_name(nb, name)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/engines.py", line 385, in nb_kernel_name
+    return nb_kernel_name(nb, name)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/utils.py", line 52, in nb_kernel_name
+    raise ValueError("No kernel name found in notebook and no override provided.")
+ValueError: No kernel name found in notebook and no override provided.
+[2024-07-11T22:50:44.993+0700] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=example_papermill_operator, task_id=run_example_notebook, run_id=manual__2024-07-11T15:49:53.369487+00:00, execution_date=20240711T154953, start_date=20240711T155044, end_date=20240711T155044
+[2024-07-11T22:50:45.050+0700] {standard_task_runner.py:110} ERROR - Failed to execute job 17 for task run_example_notebook (No kernel name found in notebook and no override provided.; 244415)
+[2024-07-11T22:50:45.080+0700] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-11T22:50:45.115+0700] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T22:50:45.124+0700] {local_task_job_runner.py:222} INFO - ::endgroup::

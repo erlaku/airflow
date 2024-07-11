@@ -1,0 +1,32 @@
+[2024-07-11T15:22:03.607+0700] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T15:22:03.653+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: update_allogistic.run_notebook manual__2024-07-11T08:10:47.201577+00:00 [queued]>
+[2024-07-11T15:22:03.690+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: update_allogistic.run_notebook manual__2024-07-11T08:10:47.201577+00:00 [queued]>
+[2024-07-11T15:22:03.694+0700] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-07-11T15:22:03.805+0700] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_notebook> on 2024-07-11 08:10:47.201577+00:00
+[2024-07-11T15:22:03.815+0700] {standard_task_runner.py:63} INFO - Started process 43938 to run task
+[2024-07-11T15:22:03.822+0700] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'update_allogistic', 'run_notebook', 'manual__2024-07-11T08:10:47.201577+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/allogistic.py', '--cfg-path', '/tmp/tmps_wat2tp']
+[2024-07-11T15:22:03.830+0700] {standard_task_runner.py:91} INFO - Job 11: Subtask run_notebook
+[2024-07-11T15:22:04.029+0700] {task_command.py:426} INFO - Running <TaskInstance: update_allogistic.run_notebook manual__2024-07-11T08:10:47.201577+00:00 [running]> on host LWIN-ID-OCT22-0115.
+[2024-07-11T15:22:04.332+0700] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='update_allogistic' AIRFLOW_CTX_TASK_ID='run_notebook' AIRFLOW_CTX_EXECUTION_DATE='2024-07-11T08:10:47.201577+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-11T08:10:47.201577+00:00'
+[2024-07-11T15:22:04.339+0700] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T15:22:04.343+0700] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T15:22:04.347+0700] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/dags/allogistic.py", line 33, in run_notebook
+    pm.execute_notebook(
+TypeError: execute_notebook() missing 1 required positional argument: 'output_path'
+[2024-07-11T15:22:04.449+0700] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=update_allogistic, task_id=run_notebook, run_id=manual__2024-07-11T08:10:47.201577+00:00, execution_date=20240711T081047, start_date=20240711T082203, end_date=20240711T082204
+[2024-07-11T15:22:04.566+0700] {standard_task_runner.py:110} ERROR - Failed to execute job 11 for task run_notebook (execute_notebook() missing 1 required positional argument: 'output_path'; 43938)
+[2024-07-11T15:22:04.604+0700] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-11T15:22:04.660+0700] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T15:22:04.669+0700] {local_task_job_runner.py:222} INFO - ::endgroup::

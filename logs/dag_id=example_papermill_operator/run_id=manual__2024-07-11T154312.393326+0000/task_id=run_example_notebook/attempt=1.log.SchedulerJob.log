@@ -1,0 +1,1 @@
+[2024-07-11T22:45:01.420+0700] {scheduler_job_runner.py:843} ERROR - Executor reports task instance <TaskInstance: example_papermill_operator.run_example_notebook manual__2024-07-11T15:43:12.393326+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

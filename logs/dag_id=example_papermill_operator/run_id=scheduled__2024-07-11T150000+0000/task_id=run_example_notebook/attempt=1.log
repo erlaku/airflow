@@ -1,0 +1,54 @@
+[2024-07-11T23:33:57.227+0700] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T23:33:57.249+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example_papermill_operator.run_example_notebook scheduled__2024-07-11T15:00:00+00:00 [queued]>
+[2024-07-11T23:33:57.284+0700] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example_papermill_operator.run_example_notebook scheduled__2024-07-11T15:00:00+00:00 [queued]>
+[2024-07-11T23:33:57.285+0700] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-07-11T23:33:57.328+0700] {taskinstance.py:2330} INFO - Executing <Task(PapermillOperator): run_example_notebook> on 2024-07-11 15:00:00+00:00
+[2024-07-11T23:33:57.333+0700] {standard_task_runner.py:63} INFO - Started process 264051 to run task
+[2024-07-11T23:33:57.338+0700] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'example_papermill_operator', 'run_example_notebook', 'scheduled__2024-07-11T15:00:00+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/run_notebook.py', '--cfg-path', '/tmp/tmprwega3nv']
+[2024-07-11T23:33:57.340+0700] {standard_task_runner.py:91} INFO - Job 19: Subtask run_example_notebook
+[2024-07-11T23:33:57.517+0700] {task_command.py:426} INFO - Running <TaskInstance: example_papermill_operator.run_example_notebook scheduled__2024-07-11T15:00:00+00:00 [running]> on host LWIN-ID-OCT22-0115.
+[2024-07-11T23:33:57.718+0700] {logging_mixin.py:188} WARNING - /mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/utils/context.py:212 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-07-11T23:33:57.829+0700] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='example_papermill_operator' AIRFLOW_CTX_TASK_ID='run_example_notebook' AIRFLOW_CTX_EXECUTION_DATE='2024-07-11T15:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-11T15:00:00+00:00'
+[2024-07-11T23:33:57.832+0700] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T23:33:57.836+0700] {execute.py:83} INFO - Input Notebook:  /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/allogisticompiler.ipynb.ipynb
+[2024-07-11T23:33:57.839+0700] {execute.py:84} INFO - Output Notebook: /mnt/c/Users/Erland/Documents/GitHub/airflow/dags/out-allogisticompiler.ipynb
+[2024-07-11T23:33:57.843+0700] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T23:33:57.845+0700] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/iorw.py", line 199, in read
+    json.loads(path)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/airflow/providers/papermill/operators/papermill.py", line 118, in execute
+    pm.execute_notebook(
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/execute.py", line 89, in execute_notebook
+    nb = load_notebook_node(input_path)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/iorw.py", line 499, in load_notebook_node
+    nb = nbformat.reads(papermill_io.read(notebook_path), as_version=4)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/iorw.py", line 96, in read
+    notebook_metadata = self.get_handler(path, extensions).read(path)
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/iorw.py", line 203, in read
+    raise e
+  File "/mnt/c/Users/Erland/Documents/GitHub/airflow/py_env/lib/python3.10/site-packages/papermill/iorw.py", line 193, in read
+    with open(path, encoding="utf-8") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/c/Users/Erland/Documents/GitHub/airflow/dags/allogisticompiler.ipynb.ipynb'
+[2024-07-11T23:33:57.907+0700] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=example_papermill_operator, task_id=run_example_notebook, run_id=scheduled__2024-07-11T15:00:00+00:00, execution_date=20240711T150000, start_date=20240711T163357, end_date=20240711T163357
+[2024-07-11T23:33:57.976+0700] {standard_task_runner.py:110} ERROR - Failed to execute job 19 for task run_example_notebook ([Errno 2] No such file or directory: '/mnt/c/Users/Erland/Documents/GitHub/airflow/dags/allogisticompiler.ipynb.ipynb'; 264051)
+[2024-07-11T23:33:57.996+0700] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-11T23:33:58.030+0700] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T23:33:58.037+0700] {local_task_job_runner.py:222} INFO - ::endgroup::
